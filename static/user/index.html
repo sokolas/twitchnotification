@@ -11,10 +11,15 @@
             <div class="jumbotron">
                 <div class="media">
                     <img class="mr-3" width=64 height=64 v-bind:src="avatar">
-                    <div class="media-body"><h1 class="mt-0">Hello, {{ username }}!</h1><a class="btn btn-info" v-if="admin" href="/devki">Admin</a></div>
+                    <div class="media-body"><h1 class="mt-0">Hello, {{ username }}!</h1></div>
                 </div>
                 <div class="row">
-
+                    <div class="col-md-4">
+                        <a class="btn btn-info" v-if="admin" href="/devki">Admin</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-primary" href="https://www.donationalerts.com/r/sokolas">Donate</a>
+                    </div>
                 </div>
                 <hr class="my-4"> 
             </div>
