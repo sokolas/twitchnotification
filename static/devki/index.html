@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
+    </head>
+    <body>
+        <div id="app">
+            <div class="jumbotron">
+                <h1 class="display-4">VTubers administration</h1>
+                <div class="row">
+                    <a class="btn btn-info" href="/user">User</a>
+                </div>
+                <hr class="my-4">
+                <div class="row">
+                    <form v-on:submit.prevent="findChannel">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Channel" aria-label="Channel" aria-describedby="button-addon2" v-model="name">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit" id="search-button" v-on:click="findChannel">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <hr class="my-4" v-if="channels.length">
+                <h1 class="display-4" v-if="channels.length">Channels</h1>
+                <div class="row" v-for="channel in channels">
+                    <div class="col-md-4">{{channel.name}} : {{channel.id}}</div>
+                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Webhook" aria-label="Webhook" :id="'n_' + channel.id" v-model="channel.webhook"/></div>
+                    <div class="col-md-2"><button class="btn btn-primary" type="button" :id="'b_' + channel.id" v-on:click="addChannel(channel.id, channel.name, channel.webhook)">add</button></button>
+                    </div>
+                </div>
+                <hr class="my-4">
+                <h1 class="display-4">Users</h1>
+                <div class="row" v-for="user in users">
+                    <div class="col-md-4">
+                        <button class="btn btn-info" v-if="!user.isAdmin" v-on:click="addAdmin(user.userId)">+</button>
+                        <button class="btn btn-warning" v-if="user.isAdmin" v-on:click="deleteAdmin(user.userId)">-</button>
+                        {{user.name}} : {{user.userId}}
+                    </div>
+                </div>
+                <h1 class="display-4">Streamers</h1>
+                <div class="row" v-for="user in streamers">
+                    <div class="col-md-4">{{user.name}}</div>
+                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Webhook" aria-label="Webhook" :id="'n_' + user.userId" v-model="user.webhook"/></div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary" type="button" :id="'b_' + user.userId" v-on:click="addChannel(user.userId, user.name, user.webhook)">save</button></button>
+                        <button class="btn btn-danger" type="button" :id="'b_' + user.userId" v-on:click="deleteChannel(user.userId)">delete</button></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="index.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    </body>
+</html>
