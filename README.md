@@ -25,3 +25,6 @@ modify .env file, use your twitch client id and secret, use random string for SE
 Log in with your twitch, you're now an admin and can search, add and delete webhooks for streamers.
 
 Clips will appear ~5 minutes after creation!
+  
+# support me
+  https://www.donationalerts.com/r/sokolas
