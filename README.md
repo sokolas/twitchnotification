@@ -11,8 +11,10 @@ MongoDB - https://docs.mongodb.com/manual/installation/
 
 ## installation
 rename .env_example to .env
+  
 modify .env file, use your twitch client id and secret, use random string for SESSION_SECRET
-Only use PROD=true when you have a properly set up webserver on a 80 or 443 port!
+
+  Only use PROD=true when you have a properly set up webserver on a 80 or 443 port!
 
 `npm install`
 
@@ -21,4 +23,5 @@ Only use PROD=true when you have a properly set up webserver on a 80 or 443 port
 
 ## first setup
 Log in with your twitch, you're now an admin and can search, add and delete webhooks for streamers.
+
 Clips will appear ~5 minutes after creation!
